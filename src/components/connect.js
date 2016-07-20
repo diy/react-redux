@@ -212,8 +212,8 @@ export default function connect(mapStateToProps, mapDispatchToProps, mergeProps,
         this.trySubscribe()
       }
 
-      componentWillReceiveProps(nextProps) {
-        if (!pure || !shallowEqual(nextProps, this.props)) {
+      componentWillReceiveProps(nextProps, nextContext) {
+        if (!pure || !shallowEqual(nextProps, this.props ||  !shallowEqual(nextContext, this.context))) {
           this.haveOwnPropsChanged = true
         }
       }
